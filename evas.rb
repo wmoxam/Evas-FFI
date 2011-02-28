@@ -114,14 +114,77 @@ module Evas
   # Object Events
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Object__Group__Events.html
 
+                             # data, Evas, Evas_Object, event_info 
+  callback :object_event_cb, [:pointer, :pointer, :pointer, :pointer], :void
+
+  attach_function :evas_object_event_callback_add, [:pointer, EvasCallbackType, :object_event_cb, :pointer], :void 
+  attach_function :evas_object_event_callback_del, [:pointer, EvasCallbackType, :object_event_cb], :void
+  attach_function :evas_object_event_callback_del_full, [:pointer, EvasCallbackType, :object_event_cb, :pointer], :void
+  attach_function :evas_object_pass_events_set, [:pointer, :int], :void
+  attach_function :evas_object_pass_events_get, [:pointer], :int
+  attach_function :evas_object_repeat_events_set, [:pointer, :int], :void
+  attach_function :evas_object_repeat_events_get, [:pointer], :int
+  attach_function :evas_object_propagate_events_set, [:pointer, :int], :void
+  attach_function :evas_object_propagate_events_get, [:pointer], :int
+
   # UV Mapping
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Object__Group__Map.html
 
   # Size Hints
   # http://docs.enlightenment.org/auto/evas/group__Evas__Object__Group__Size__Hints.html
 
+  EvasAspectControl = enum( :none, 0,
+                            :neither,
+                            :horizontal,
+                            :vertical,
+                            :both)
+
+  attach_function :evas_object_size_hint_min_get, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_size_hint_min_set, [:pointer, :int, :int], :void
+  attach_function :evas_object_size_hint_max_get, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_size_hint_max_set, [:pointer, :int, :int], :void
+  attach_function :evas_object_size_hint_request_get, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_size_hint_request_set, [:pointer, :int, :int], :void
+  attach_function :evas_object_size_hint_aspect_get, [:pointer, :pointer, :pointer, :pointer], :void
+  attach_function :evas_object_size_hint_aspect_set, [:pointer, EvasAspectControl, :int, :int], :void
+  attach_function :evas_object_size_hint_align_get, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_size_hint_align_set, [:pointer, :double, :double], :void
+  attach_function :evas_object_size_hint_weight_get, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_size_hint_weight_set, [:pointer, :double, :double], :void
+  attach_function :evas_object_size_hint_padding_set, [:pointer, :int, :int, :int, :int], :void
+
   # Extra Object Manipulation
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Object__Group__Extras.html
+
+  EvasObjectPointerMode = enum(:autograb, :nograb)
+  EvasRenderOp = enum( :blend, 0,
+                       :blend_rel,
+                       :copy,
+                       :copy_rel,
+                       :add,
+                       :add_rel,
+                       :sub,
+                       :sub_rel,
+                       :tint,
+                       :tint_rel,
+                       :mask,
+                       :mul)
+
+  attach_function :evas_object_data_set, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_data_get, [:pointer, :pointer], :pointer
+  attach_function :evas_object_data_del, [:pointer, :pointer], :pointer
+  attach_function :evas_object_pointer_mode_set, [:pointer, EvasObjectPointerMode], :void
+  attach_function :evas_object_pointer_mode_get, [:pointer], EvasObjectPointerMode
+  attach_function :evas_object_anti_alias_set, [:pointer, :int], :void
+  attach_function :evas_object_anti_alias_get, [:pointer], :int
+  attach_function :evas_object_scale_set, [:pointer, :double], :void
+  attach_function :evas_object_scale_get, [:pointer], :double
+  attach_function :evas_object_render_op_set, [:pointer, EvasRenderOp], :void
+  attach_function :evas_object_render_op_get, [:pointer], EvasRenderOp
+  attach_function :evas_object_precise_is_inside_set, [:pointer, :int], :void
+  attach_function :evas_object_precise_is_inside_get, [:pointer], :int
+  attach_function :evas_object_static_clip_set, [:pointer, :int], :void
+  attach_function :evas_object_static_clip_get, [:pointer], :int
 
   # Finding Objects
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Object__Group__Find.html
