@@ -234,8 +234,6 @@ module Evas
   attach_function :evas_damage_rectangle_add, [:pointer, :int, :int, :int, :int], :void
   attach_function :evas_data_attach_get, [:pointer], :pointer
   attach_function :evas_data_attach_set, [:pointer, :pointer], :pointer
-  attach_function :evas_engine_info_get, [:pointer], :pointer
-  attach_function :evas_engine_info_set, [:pointer, :pointer], :void
   attach_function :evas_focus_in, [:pointer], :void
   attach_function :evas_focus_out, [:pointer], :void
   attach_function :evas_focus_state_get, [:pointer], :int
@@ -249,18 +247,24 @@ module Evas
   attach_function :evas_object_show, [:pointer], :void
   attach_function :evas_obscured_rectangle_add, [:pointer, :int, :int, :int, :int], :void
   attach_function :evas_obscured_clear, [:pointer], :void
-  attach_function :evas_output_method_set, [:pointer, :int], :void
   attach_function :evas_output_size_get, [:pointer, :pointer, :pointer], :void
   attach_function :evas_output_size_set, [:pointer, :int, :int], :void
   attach_function :evas_output_viewport_set, [:pointer, :int, :int, :int, :int], :void
   attach_function :evas_render, [:pointer], :void
   attach_function :evas_render_idle_flush, [:pointer], :void
-  attach_function :evas_render_method_lookup, [:string], :int
   attach_function :evas_render_updates_free, [:pointer], :void
   attach_function :evas_render_updates, [:pointer], :pointer
 
   # Render Engine Methods
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Output__Method.html
+  
+  attach_function :evas_output_method_set, [:pointer, :int], :void
+  attach_function :evas_output_method_get, [:pointer], :int
+  attach_function :evas_engine_info_get, [:pointer], :pointer
+  attach_function :evas_engine_info_set, [:pointer, :pointer], :int
+  attach_function :evas_render_method_lookup, [:pointer], :int
+  attach_function :evas_render_method_list, [:void], :pointer
+  attach_function :evas_render_method_list_free, [:pointer], :void
 
   # Output and Viewport Resizing Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Output__Size.html
