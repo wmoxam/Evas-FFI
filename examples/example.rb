@@ -2,7 +2,7 @@
 
 # In this version we'll do a 1-1 api mapping
 
-require './evas'
+require '../evas'
 
 WIDTH = 320
 HEIGHT = 240
@@ -77,7 +77,6 @@ def create_canvas(width, height)
    # ARGB32 is sizeof(int), that is 4 bytes, per pixel
    pixels = FFI::MemoryPointer.new(:int, width * height)
 
-   # I'm really unsure if this is indeed a nested struct ..
    einfo[:info][:depth_type] = Evas::EVAS_ENGINE_BUFFER_DEPTH_ARGB32
    einfo[:info][:dest_buffer] = pixels
    einfo[:info][:dest_buffer_row_bytes] = width * FFI::MemoryPointer.new(:int).type_size  # sizeof(int) .. not sure how to resolve
