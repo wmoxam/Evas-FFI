@@ -188,6 +188,16 @@ module Evas
 
   # Finding Objects
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Object__Group__Find.html
+  
+  attach_function :evas_focus_get, [:pointer], :pointer
+  attach_function :evas_object_name_find, [:pointer, :pointer], :pointer
+  attach_function :evas_object_top_at_xy_get, [:pointer, :int, :int, :int], :pointer
+  attach_function :evas_object_top_at_pointer_get, [:pointer], :pointer
+  attach_function :evas_object_top_in_rectangle_get, [:pointer, :int, :int, :int, :int, :int, :int], :pointer
+  attach_function :evas_objects_at_xy_get, [:pointer, :int, :int, :int, :int], :pointer
+  attach_function :evas_objects_in_rectange_get, [:pointer, :int, :int, :int, :int, :int, :int], :pointer
+  attach_function :evas_object_bottom:get, [:pointer], :pointer
+  attach_function :evas_object_top_get, [:pointer], :pointer 
 
   # Object Method Interceptors
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Object__Group__Interceptors.html
