@@ -195,12 +195,51 @@ module Evas
   attach_function :evas_object_top_at_pointer_get, [:pointer], :pointer
   attach_function :evas_object_top_in_rectangle_get, [:pointer, :int, :int, :int, :int, :int, :int], :pointer
   attach_function :evas_objects_at_xy_get, [:pointer, :int, :int, :int, :int], :pointer
-  attach_function :evas_objects_in_rectange_get, [:pointer, :int, :int, :int, :int, :int, :int], :pointer
-  attach_function :evas_object_bottom:get, [:pointer], :pointer
+  attach_function :evas_objects_in_rectangle_get, [:pointer, :int, :int, :int, :int, :int, :int], :pointer
+  attach_function :evas_object_bottom_get, [:pointer], :pointer
   attach_function :evas_object_top_get, [:pointer], :pointer 
 
   # Object Method Interceptors
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Object__Group__Interceptors.html
+
+  callback :intercept_show_cb, [:pointer, :pointer], :void
+  callback :intercept_hide_cb, [:pointer, :pointer], :void
+  callback :intercept_move_cb, [:pointer, :pointer, :int, :int], :void
+  callback :intercept_resize_cb, [:pointer, :pointer, :int, :int], :void
+  callback :intercept_raise_cb, [:pointer, :pointer], :void
+  callback :intercept_lower_cb, [:pointer, :pointer], :void
+  callback :intercept_stack_above_cb, [:pointer, :pointer, :pointer], :void
+  callback :intercept_stack_below_cb, [:pointer, :pointer, :pointer], :void
+  callback :intercept_layer_set_cb, [:pointer, :pointer, :int], :void
+  callback :intercept_color_set_cb, [:pointer, :pointer, :int, :int, :int, :int], :void
+  callback :intercept_clip_set_cb, [:pointer, :pointer, :pointer], :void
+  callback :intercept_clip_unset_cb, [:pointer, :pointer], :void
+
+
+  attach_function :evas_object_intercept_show_callback_add, [:pointer, :intercept_show_cb, :pointer], :void
+  attach_function :evas_object_intercept_show_callback_del, [:pointer, :intercept_show_cb], :pointer
+  attach_function :evas_object_intercept_hide_callback_add, [:pointer, :intercept_hide_cb], :void
+  attach_function :evas_object_intercept_hide_callback_del, [:pointer, :intercept_hide_cb], :pointer
+  attach_function :evas_object_intercept_move_callback_add, [:pointer, :intercept_move_cb, :pointer], :void
+  attach_function :evas_object_intercept_move_callback_del, [:pointer, :intercept_move_cb], :pointer
+  attach_function :evas_object_intercept_resize_callback_add, [:pointer, :intercept_resize_cb, :pointer], :void
+  attach_function :evas_object_intercept_resize_callback_del, [:pointer, :intercept_resize_cb], :pointer
+  attach_function :evas_object_intercept_raise_callback_add, [:pointer, :intercept_raise_cb, :pointer], :void
+  attach_function :evas_object_intercept_raise_callback_del, [:pointer, :intercept_raise_cb], :pointer
+  attach_function :evas_object_intercept_lower_callback_add, [:pointer, :intercept_lower_cb, :pointer], :void
+  attach_function :evas_object_intercept_lower_callback_del, [:pointer, :intercept_lower_cb], :pointer
+  attach_function :evas_object_intercept_stack_above_callback_add, [:pointer, :intercept_stack_above_cb, :pointer], :void
+  attach_function :evas_object_intercept_stack_above_callback_del, [:pointer, :intercept_stack_above_cb], :pointer
+  attach_function :evas_object_intercept_stack_below_callback_add, [:pointer, :intercept_stack_below_cb, :pointer], :void
+  attach_function :evas_object_intercept_stack_below_callback_del, [:pointer, :intercept_stack_below_cb], :pointer
+  attach_function :evas_object_intercept_layer_set_callback_add, [:pointer, :intercept_layer_set_cb, :pointer], :void
+  attach_function :evas_object_intercept_layer_set_callback_del, [:pointer, :intercept_layer_set_cb], :pointer
+  attach_function :evas_object_intercept_color_set_callback_add, [:pointer, :intercept_color_set_cb, :pointer], :void
+  attach_function :evas_object_intercept_color_set_callback_del, [:pointer, :intercept_color_set_cb], :pointer
+  attach_function :evas_object_intercept_clip_set_callback_add, [:pointer, :intercept_clip_set_cb, :pointer], :void
+  attach_function :evas_object_intercept_clip_set_callback_del, [:pointer, :intercept_clip_set_cb], :pointer
+  attach_function :evas_object_intercept_clip_unset_callback_add, [:pointer, :intercept_clip_unset_cb, :pointer], :void
+  attach_function :evas_object_intercept_clip_unset_callback_del, [:pointer, :intercept_clip_unset_cb], :pointer
 
   # Rectangle Object Functions
   # http://docs.enlightenment.org/auto/evas/group__Evas__Object__Rectangle.html
