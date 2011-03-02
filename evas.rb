@@ -215,7 +215,6 @@ module Evas
   callback :intercept_clip_set_cb, [:pointer, :pointer, :pointer], :void
   callback :intercept_clip_unset_cb, [:pointer, :pointer], :void
 
-
   attach_function :evas_object_intercept_show_callback_add, [:pointer, :intercept_show_cb, :pointer], :void
   attach_function :evas_object_intercept_show_callback_del, [:pointer, :intercept_show_cb], :pointer
   attach_function :evas_object_intercept_hide_callback_add, [:pointer, :intercept_hide_cb], :void
@@ -244,11 +243,148 @@ module Evas
   # Rectangle Object Functions
   # http://docs.enlightenment.org/auto/evas/group__Evas__Object__Rectangle.html
 
+  attach_function :evas_object_rectangle_add, [:pointer], :pointer
+
   # Image Object Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Object__Image.html
 
+  callback :image_pixels_get_cb, [:pointer, :pointer], :void
+
+  EvasBorderFillMode = enum( :none, 0,
+                             :default,
+                             :solid )
+
+  EvasFillSpread = enum( :reflect, 0,
+                         :repeat,
+                         :restrict,
+                         :restrict_reflect,
+                         :restrict_repeat,
+                         :pad )
+
+  EvasLoadError = enum( :none, 0,
+                        :generic,
+                        :does_not_exist,
+                        :permission_denied,
+                        :resource_allocation_failed,
+                        :corrupt_file,
+                        :unknown_format )
+
+  EvasImageContentHint = enum( :none, 0,
+                               :dynamic,
+                               :static ) 
+
+  EvasImageScaleHint = enum( :none, 0,
+                             :dynamic,
+                             :static )
+
+  EvasColorspace = enum( :argb8888,
+                         :ycbcr422p601_pl,
+                         :ycbcr422p709_pl,
+                         :rgb565_a5p,
+                         :gry8 )
+
+  attach_function :evas_object_image_add, [:pointer], :pointer
+  attach_function :evas_object_image_filled_add, [:pointer], :pointer
+  attach_function :evas_object_image_file_set, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_image_file_get, [:pointer, :pointer, :pointer], :void  
+  attach_function :evas_object_image_source_set, [:pointer, :pointer], :void  
+  attach_function :evas_object_image_source_get, [:pointer], :pointer  
+  attach_function :evas_object_image_source_unset, [:pointer], :int  
+  attach_function :evas_object_image_border_set, [:pointer, :int, :int, :int, :int], :void  
+  attach_function :evas_object_image_border_get, [:pointer, :pointer, :pointer, :pointer, :pointer], :void
+  attach_function :evas_object_image_border_center_fill_set, [:pointer, EvasBorderFillMode], :void
+  attach_function :evas_object_image_border_center_fill_get, [:pointer], EvasBorderFillMode  
+  attach_function :evas_object_image_filled_set, [:pointer, :int], :void 
+  attach_function :evas_object_image_filled_get, [:pointer], :int  
+  attach_function :evas_object_image_border_scale_set, [:pointer, :double], :void  
+  attach_function :evas_object_image_border_scale_get, [:pointer], :double  
+  attach_function :evas_object_image_fill_set, [:pointer, :int, :int, :int, :int], :void
+  attach_function :evas_object_image_fill_get, [:pointer, :pointer, :pointer, :pointer, :pointer], :void  
+  attach_function :evas_object_image_fill_spread_set, [:pointer, EvasFillSpread], :void
+  attach_function :evas_object_image_fill_spread_get, [:pointer], EvasFillSpread 
+  attach_function :evas_object_image_size_set, [:pointer, :int, :int], :void  
+  attach_function :evas_object_image_size_get, [:pointer, :pointer, :pointer], :void 
+  attach_function :evas_object_image_stride_get, [:pointer], :int 
+  attach_function :evas_object_image_load_error_get, [:pointer], EvasLoadError 
+  attach_function :evas_object_image_data_convert, [:pointer, EvasColorspace], :pointer 
+  attach_function :evas_object_image_data_set, [:pointer, :pointer], :void 
+  attach_function :evas_object_image_data_get, [:pointer, :int], :pointer  
+  attach_function :evas_object_image_preload, [:pointer, :int], :void  
+  attach_function :evas_object_image_data_copy_set, [:pointer, :pointer], :void 
+  attach_function :evas_object_image_data_update_add, [:pointer, :int, :int, :int, :int], :void 
+  attach_function :evas_object_image_alpha_set, [:pointer, :int], :void 
+  attach_function :evas_object_image_alpha_get, [:pointer], :int
+  attach_function :evas_object_image_smooth_scale_set, [:pointer, :int], :void
+  attach_function :evas_object_image_smooth_scale_get, [:pointer], :int
+  attach_function :evas_object_image_reload, [:pointer], :void
+  attach_function :evas_object_image_save, [:pointer, :pointer, :pointer, :pointer], :int
+  attach_function :evas_object_image_pixels_import, [:pointer, :pointer], :int
+  attach_function :evas_object_image_pixels_get_callback_set, [:pointer, :image_pixels_get_cb, :pointer], :void
+  attach_function :evas_object_image_pixels_dirty_set, [:pointer, :int], :void
+  attach_function :evas_object_image_pixels_dirty_get, [:pointer], :int
+  attach_function :evas_object_image_load_dpi_set, [:pointer, :double], :void
+  attach_function :evas_object_image_load_dpi_get, [:pointer], :double
+  attach_function :evas_object_image_load_size_set, [:pointer, :int, :int], :void
+  attach_function :evas_object_image_load_size_get, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_image_load_scale_down_set, [:pointer, :int], :void
+  attach_function :evas_object_image_load_scale_down_get, [:pointer], :int
+  attach_function :evas_object_image_colorspace_set, [:pointer, EvasColorspace], :void
+  attach_function :evas_object_image_colorspace_get, [:pointer], EvasColorspace
+  attach_function :evas_object_image_native_surface_set, [:pointer, :pointer], :void
+  attach_function :evas_object_image_native_surface_get, [:pointer], :pointer
+  attach_function :evas_object_image_scale_hint_set, [:pointer, EvasImageScaleHint], :void
+  attach_function :evas_object_image_scale_hint_get, [:pointer], EvasImageScaleHint
+  attach_function :evas_object_image_content_hint_set, [:pointer, EvasImageContentHint], :void
+  attach_function :evas_object_image_content_hint_get, [:pointer], EvasImageContentHint
+  attach_function :evas_object_image_alpha_mask_set, [:pointer, :int], :void
+
   # Text Object Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Object__Text.html
+
+  EvasBiDiDirection = enum( :natural,
+                            :ltr,
+                            :rtl )
+
+  EvasTextStyleType = enum( :plain,
+                            :shadow,
+                            :outline,
+                            :soft_outline,
+                            :glow,
+                            :outline_shadow,
+                            :far_shadow,
+                            :outline_soft_shadow,
+                            :soft_shadow,
+                            :far_soft_shadow )
+
+  attach_function :evas_object_text_add, [:pointer], :pointer
+  attach_function :evas_object_text_font_source_set, [:pointer, :pointer], :void
+  attach_function :evas_object_text_font_source_get, [:pointer], :pointer
+  attach_function :evas_object_text_font_set, [:pointer, :pointer, :int], :void
+  attach_function :evas_object_text_font_get, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_text_text_set, [:pointer, :pointer], :void
+  attach_function :evas_object_text_text_get, [:pointer], :pointer
+  attach_function :evas_object_text_direction_get, [:pointer], EvasBiDiDirection
+  attach_function :evas_object_text_ascent_get, [:pointer], :int
+  attach_function :evas_object_text_descent_get, [:pointer], :int
+  attach_function :evas_object_text_max_ascent_get, [:pointer], :int
+  attach_function :evas_object_text_max_descent_get, [:pointer], :int
+  attach_function :evas_object_text_inset_get, [:pointer], :int
+  attach_function :evas_object_text_horiz_advance_get, [:pointer], :int
+  attach_function :evas_object_text_vert_advance_get, [:pointer], :int
+  attach_function :evas_object_text_char_pos_get, [:pointer, :pointer, :pointer, :pointer, :pointer], :int
+  attach_function :evas_object_text_last_up_to_pos, [:pointer, :int, :int], :int
+  attach_function :evas_object_text_char_coords_get, [:pointer, :int, :int, :pointer, :pointer, :pointer, :pointer], :int
+  attach_function :evas_object_text_style_set, [:pointer, EvasTextStyleType], :void
+  attach_function :evas_object_text_style_get, [:pointer], EvasTextStyleType
+  attach_function :evas_object_text_shadow_color_set, [:pointer, :int, :int, :int, :int], :void
+  attach_function :evas_object_text_shadow_color_get, [:pointer, :pointer, :pointer, :pointer, :pointer], :void
+  attach_function :evas_object_text_glow_color_set, [:pointer, :int, :int, :int, :int], :void
+  attach_function :evas_object_text_glow_color_get, [:pointer, :pointer, :pointer, :pointer, :pointer], :void
+  attach_function :evas_object_text_glow2_color_set, [:pointer, :int, :int, :int, :int], :void
+  attach_function :evas_object_text_glow2_color_get, [:pointer, :pointer, :pointer, :pointer, :pointer], :void
+  attach_function :evas_object_text_outline_color_set, [:pointer, :int, :int, :int, :int], :void
+  attach_function :evas_object_text_outline_color_get, [:pointer, :pointer, :pointer, :pointer, :pointer], :void
+  attach_function :evas_object_text_style_pad_get, [:pointer], :void
 
   # Textblock Object Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Object__Textblock.html
