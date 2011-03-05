@@ -73,12 +73,12 @@ module Evas
 
   callback :async_events_put_cb, [:pointer, EvasCallbackType, :pointer], :void
 
-  attach_function :evas_async_events_fd_get, [:void], :int
-  attach_function :evas_async_events_process, [:void], :int
+  attach_function :evas_async_events_fd_get, [], :int
+  attach_function :evas_async_events_process, [], :int
   attach_function :evas_async_events_put, [:pointer, EvasCallbackType, :pointer, :async_events_put_cb], :int
   attach_function :evas_init, [], :void
   attach_function :evas_shutdown, [], :void
-  attach_function :evas_alloc_error, [:void], EvasAllocError
+  attach_function :evas_alloc_error, [], EvasAllocError
   
   # Basic Object Manipulation
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Object__Group__Basic.html
@@ -389,6 +389,85 @@ module Evas
   # Textblock Object Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Object__Textblock.html
 
+  EvasTextblockTextType = enum( :raw,
+                                :plain,
+                                :markup )
+
+  EvasTextblockCursorType = enum( :under, :before )
+
+  attach_function :evas_object_textblock_add, [:pointer], :pointer
+  attach_function :evas_textblock_style_new, [], :pointer
+  attach_function :evas_textblock_style_free, [:pointer], :void
+  attach_function :evas_textblock_style_set, [:pointer, :pointer], :void
+  attach_function :evas_textblock_style_get, [:pointer], :void
+  attach_function :evas_object_textblock_style_set, [:pointer, :pointer], :void
+  attach_function :evas_object_textblock_style_get, [:pointer], :pointer
+  attach_function :evas_object_textblock_replace_char_set, [:pointer, :pointer], :void
+  attach_function :evas_object_textblock_replace_char_get, [:pointer], :pointer
+  attach_function :evas_object_textblock_newline_mode_set, [:pointer, :int], :void
+  attach_function :evas_object_textblock_newline_mode_get, [:pointer], :int
+  attach_function :evas_textblock_escape_string_get, [:pointer], :pointer
+  attach_function :evas_textblock_escape_string_range_get, [:pointer, :pointer], :pointer
+  attach_function :evas_textblock_string_escape_get, [:pointer, :pointer], :pointer
+  attach_function :evas_object_textblock_text_markup_set, [:pointer, :pointer], :void
+  attach_function :evas_object_textblock_text_markup_prepend, [:pointer, :pointer], :void
+  attach_function :evas_object_textblock_text_markup_get, [:pointer], :pointer
+  attach_function :evas_object_textblock_cursor_get, [:pointer], :pointer
+  attach_function :evas_object_textblock_cursor_new, [:pointer], :pointer
+  attach_function :evas_textblock_cursor_free, [:pointer], :void
+  attach_function :evas_textblock_cursor_is_format, [:pointer], :int
+  attach_function :evas_textblock_node_format_first_get, [:pointer], :pointer
+  attach_function :evas_textblock_node_format_last_get, [:pointer], :pointer
+  attach_function :evas_textblock_node_format_next_get, [:pointer], :pointer
+  attach_function :evas_textblock_node_format_prev_get, [:pointer], :pointer
+  attach_function :evas_textblock_node_format_remove_pair, [:pointer, :pointer], :void
+  attach_function :evas_textblock_cursor_paragraph_first, [:pointer], :void
+  attach_function :evas_textblock_cursor_paragraph_last, [:pointer], :void
+  attach_function :evas_textblock_cursor_paragraph_next, [:pointer], :int
+  attach_function :evas_textblock_cursor_paragraph_prev, [:pointer], :int
+  attach_function :evas_textblock_cursor_set_at_format, [:pointer, :pointer], :void
+  attach_function :evas_textblock_cursor_format_next, [:pointer], :int
+  attach_function :evas_textblock_cursor_format_prev, [:pointer], :int
+  attach_function :evas_textblock_cursor_char_next, [:pointer], :int
+  attach_function :evas_textblock_cursor_char_prev, [:pointer], :int
+  attach_function :evas_textblock_cursor_paragraph_char_first, [:pointer], :void
+  attach_function :evas_textblock_cursor_paragraph_char_last, [:pointer], :void
+  attach_function :evas_textblock_cursor_line_char_first, [:pointer], :void
+  attach_function :evas_textblock_cursor_line_char_last, [:pointer], :void
+  attach_function :evas_textblock_cursor_pos_get, [:pointer], :int
+  attach_function :evas_textblock_cursor_pos_set, [:pointer, :int], :void
+  attach_function :evas_textblock_cursor_line_set, [:pointer, :int], :int
+  attach_function :evas_textblock_cursor_compare, [:pointer, :pointer], :int
+  attach_function :evas_textblock_cursor_copy, [:pointer, :pointer], :void
+  attach_function :evas_textblock_cursor_text_append, [:pointer, :pointer], :int
+  attach_function :evas_textblock_cursor_text_prepend, [:pointer, :pointer], :int
+  attach_function :evas_textblock_cursor_format_append, [:pointer, :pointer], :int
+  attach_function :evas_textblock_cursor_format_prepend, [:pointer, :pointer], :int
+  attach_function :evas_textblock_cursor_char_delete, [:pointer], :void
+  attach_function :evas_textblock_cursor_range_delete, [:pointer, :pointer], :void
+  attach_function :evas_textblock_cursor_content_get, [:pointer], :pointer
+  attach_function :evas_textblock_cursor_range_text_get, [:pointer, :pointer, EvasTextblockTextType], :pointer
+  attach_function :evas_textblock_cursor_paragraph_text_get, [:pointer], :pointer
+  attach_function :evas_textblock_cursor_paragraph_text_length_get, [:pointer], :int
+  attach_function :evas_textblock_cursor_format_get, [:pointer], :pointer
+  attach_function :evas_textblock_node_format_text_get, [:pointer], :pointer
+  attach_function :evas_textblock_cursor_at_format_set, [:pointer, :pointer], :void
+  attach_function :evas_textblock_cursor_format_is_visible_get, [:pointer], :int
+  attach_function :evas_textblock_cursor_geometry_get, [:pointer, :pointer, :pointer, :pointer, :pointer, :pointer, EvasTextblockCursorType], :int
+  attach_function :evas_textblock_cursor_char_geometry_get, [:pointer, :pointer, :pointer, :pointer, :pointer], :int
+  attach_function :evas_textblock_cursor_pen_geometry_get, [:pointer, :pointer, :pointer, :pointer, :pointer], :int
+  attach_function :evas_textblock_cursor_line_geometry_get, [:pointer, :pointer, :pointer, :pointer, :pointer], :int
+  attach_function :evas_textblock_cursor_char_coord_set, [:pointer, :int, :int], :int
+  attach_function :evas_textblock_cursor_line_coord_set, [:pointer, :int], :int
+  attach_function :evas_textblock_cursor_range_geometry_get, [:pointer, :pointer], :pointer
+  attach_function :evas_textblock_cursor_format_item_geometry_get, [:pointer, :pointer, :pointer, :pointer, :pointer], :int
+  attach_function :evas_textblock_cursor_eol_get, [:pointer], :int
+  attach_function :evas_object_textblock_line_number_geometry_get, [:pointer, :int, :pointer, :pointer, :pointer, :pointer], :int
+  attach_function :evas_object_textblock_clear, [:pointer], :void
+  attach_function :evas_object_textblock_size_formatted_get, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_textblock_size_native_get, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_textblock_style_insets_get, [:pointer, :pointer, :pointer, :pointer, :pointer], :void
+
   # Line Object Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Line__Group.html
 
@@ -448,7 +527,7 @@ module Evas
   attach_function :evas_engine_info_get, [:pointer], :pointer
   attach_function :evas_engine_info_set, [:pointer, :pointer], :int
   attach_function :evas_render_method_lookup, [:pointer], :int
-  attach_function :evas_render_method_list, [:void], :pointer
+  attach_function :evas_render_method_list, [], :pointer
   attach_function :evas_render_method_list_free, [:pointer], :void
 
   # Output and Viewport Resizing Functions
