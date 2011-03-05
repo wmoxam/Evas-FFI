@@ -478,6 +478,9 @@ module Evas
   # Polygon Object Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Object__Polygon.html
   
+  attach_function :evas_object_polygon_add, [:pointer], :pointer
+  attach_function :evas_object_polygon_pointer_add, [:pointer, :int, :int], :void
+  attach_function :ecas_object_polygon_pointer_clear, [:pointer], :void
 
   # Smart Object Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Smart__Object__Group.html
