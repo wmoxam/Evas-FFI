@@ -471,6 +471,10 @@ module Evas
   # Line Object Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Line__Group.html
 
+  attach_function :evas_object_line_add, [:pointer], :pointer
+  attach_function :evas_object_line_xy_set, [:pointer, :int, :int, :int, :int], :void
+  attach_function :evas_object_line_xy_get, [:pointer, :pointer, :pointer, :pointer, :pointer], :void
+
   # Polygon Object Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Object__Polygon.html
   
