@@ -526,6 +526,44 @@ module Evas
   # Box Smart Object
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Object__Box.html
 
+  callback :layout_cb, [:pointer, :pointer, :pointer], :void
+
+  attach_function :evas_object_box_add, [:pointer], :pointer
+  attach_function :evas_object_box_add_to, [:pointer], :pointer
+  attach_function :evas_object_box_smart_set, [:pointer], :void
+  attach_function :evas_object_box_smart_class_get, [], :pointer
+  attach_function :evas_object_box_layout_set, [:pointer, :layout_cb, :pointer, :pointer], :void
+  attach_function :evas_object_box_layout_horizontal, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_box_layout_vertical, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_box_layout_homogeneous_horizontal, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_box_layout_homogeneous_vertical, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_box_layout_homogeneous_max_size_horizontal, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_box_layout_homogeneous_max_size_vertical, [:pointer], :pointer, :pointer, :void
+  attach_function :evas_object_box_layout_flow_horizontal, [:pointer], :pointer, :pointer, :void
+  attach_function :evas_object_box_layout_flow_vertical, [:pointer], :pointer, :pointer, :void
+  attach_function :evas_object_box_layout_stack, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_box_align_set, [:pointer, :double, :double], :void
+  attach_function :evas_object_box_align_get, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_box_padding_set, [:pointer, :int, :int], :void
+  attach_function :evas_object_box_padding_get, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_box_append, [:pointer, :pointer], :pointer
+  attach_function :evas_object_box_prepend, [:pointer, :pointer], :pointer
+  attach_function :evas_object_box_insert_before, [:pointer, :pointer, :pointer], :pointer
+  attach_function :evas_object_box_insert_after, [:pointer, :pointer, :pointer], :pointer
+  attach_function :evas_object_box_insert_at, [:pointer, :pointer, :int], :pointer
+  attach_function :evas_object_box_remove, [:pointer, :pointer], :int
+  attach_function :evas_object_box_remove_at, [:pointer, :int], :int
+  attach_function :evas_object_box_remove_all, [:pointer, :int], :int
+  attach_function :evas_object_box_iterator_new, [:pointer], :pointer
+  attach_function :evas_object_box_accessor_new, [:pointer], :pointer
+  attach_function :evas_object_box_children_get, [:pointer], :pointer
+  attach_function :evas_object_box_option_property_name_get, [:pointer, :int], :pointer
+  attach_function :evas_object_box_option_property_id_get, [:pointer, :pointer], :int
+  attach_function :evas_object_box_option_property_set, [:pointer, :pointer, :int], :int
+  attach_function :evas_object_box_option_property_vset, [:pointer, :pointer, :int, :varargs], :int
+  attach_function :evas_object_box_option_property_get, [:pointer, :int], :int
+  attach_function :evas_object_box_option_property_vget, [:pointer, :pointer, :int, :varargs], :int
+
   # Table Smart Object
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Object__Table.html
   
