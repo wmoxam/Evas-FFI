@@ -633,6 +633,11 @@ module Evas
   # Output and Viewport Resizing Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Output__Size.html
 
+  attach_function :evas_output_size_set, [:pointer, :int, :int], :void
+  attach_function :evas_output_size_get, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_output_viewport_set, [:pointer, :int, :int, :int, :int], :void
+  attach_function :evas_output_viewport_get, [:pointer, :pointer, :pointer, :pointer, :pointer], :void
+
   # Coordinate Mapping Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Coord__Mapping__Group.html
 
