@@ -657,6 +657,9 @@ module Evas
   # Event Freezing Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Event__Freezing__Group.html
 
+  attach_function :evas_event_freeze, [:pointer], :void
+  attach_function :evas_event_thaw, [:pointer], :void
+
   # Event Feeding Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Event__Feeding__Group.html
 
