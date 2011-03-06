@@ -695,6 +695,11 @@ module Evas
   # Image Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Image__Group.html
 
+  attach_function :evas_image_cache_flush, [:pointer], :void
+  attach_function :evas_image_cache_reload, [:pointer], :void
+  attach_function :evas_image_cache_set, [:pointer, :int], :void
+  attach_function :evas_image_cache_get, [:pointer], :int
+
   # Font Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Font__Group.html
 
