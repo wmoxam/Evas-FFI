@@ -518,6 +518,11 @@ module Evas
   # Clipped Smart Functions
   # http://docs.enlightenment.org/auto/evas/group__Evas__Smart__Object__Clipped.html
 
+  attach_function :evas_object_smart_move_children_relative, [:pointer, :int, :int], :void
+  attach_function :evas_object_smart_clipped_clipper_get, [:pointer], :pointer
+  attach_function :evas_object_smart_clipped_smart_set, [:pointer], :void
+  attach_function :evas_object_smart_clipped_class_get, [], :pointer
+
   # Box Smart Object
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Object__Box.html
 
