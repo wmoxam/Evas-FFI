@@ -641,6 +641,11 @@ module Evas
   # Coordinate Mapping Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Coord__Mapping__Group.html
 
+  attach_function :evas_coord_screen_x_to_world, [:pointer, :int], :int
+  attach_function :evas_coord_screen_y_to_world, [:pointer, :int], :int
+  attach_function :evas_coord_world_x_to_screen, [:pointer, :int], :int
+  attach_function :evas_coord_world_y_to_screen, [:pointer, :int], :int
+
   # Pointer Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Pointer__Group.html
 
