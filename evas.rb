@@ -479,11 +479,30 @@ module Evas
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Object__Polygon.html
   
   attach_function :evas_object_polygon_add, [:pointer], :pointer
-  attach_function :evas_object_polygon_pointer_add, [:pointer, :int, :int], :void
-  attach_function :ecas_object_polygon_pointer_clear, [:pointer], :void
+  attach_function :evas_object_polygon_point_add, [:pointer, :int, :int], :void
+  attach_function :evas_object_polygon_points_clear, [:pointer], :void
 
   # Smart Object Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Smart__Object__Group.html
+
+  attach_function :evas_object_smart_data_set, [:pointer, :pointer], :void
+  attach_function :evas_object_smart_data_get, [:pointer], :pointer
+  attach_function :evas_object_smart_smart_get, [:pointer], :pointer
+  attach_function :evas_object_smart_member_add, [:pointer, :pointer], :void
+  attach_function :evas_object_smart_member_del, [:pointer], :void
+  attach_function :evas_object_smart_parent_get, [:pointer, :pointer], :pointer
+  attach_function :evas_object_smart_type_check, [:pointer, :pointer], :int
+  attach_function :evas_object_smart_type_check_ptr, [:pointer, :pointer], :int
+  attach_function :evas_object_smart_add, [:pointer, :pointer], :pointer
+  attach_function :evas_object_smart_callback_add, [:pointer, :pointer, :pointer, :pointer], :void
+  attach_function :evas_object_smart_callback_del, [:pointer, :pointer, :pointer, :pointer], :pointer
+  attach_function :evas_object_smart_callback_call, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_smart_callbacks_descriptions_set, [:pointer, :pointer], :int
+  attach_function :evas_object_smart_callbacks_descriptions_get, [:pointer, :pointer, :pointer, :pointer, :pointer], :void
+  attach_function :evas_object_smart_need_recalculate_set, [:pointer, :int], :void
+  attach_function :evas_object_smart_need_recalculate_get, [:pointer], :int
+  attach_function :evas_object_smart_calculate, [:pointer], :void
+  attach_function :evas_object_smart_changed, [:pointer], :void
 
   # Smart Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Smart__Group.html
