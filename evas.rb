@@ -649,6 +649,11 @@ module Evas
   # Pointer Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Pointer__Group.html
 
+  attach_function :evas_pointer_output_xy_get, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_pointer_canvas_xy_get, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_pointer_button_down_mask_get, [:pointer], :int
+  attach_function :evas_pointer_inside_get, [:pointer], :int
+
   # Event Freezing Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Event__Freezing__Group.html
 
