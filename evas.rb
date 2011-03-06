@@ -682,6 +682,16 @@ module Evas
   # Canvas Events
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Canvas__Events.html
 
+  callback :event_cb, [:pointer, :pointer, :pointer], :void
+  callback :event_post_cb, [:pointer, :pointer], :void
+
+  attach_function :evas_event_callback_add, [:pointer, EvasCallbackType, :event_cb, :pointer], :void
+  attach_function :evas_event_callback_del, [:pointer, EvasCallbackType, :event_cb], :pointer
+  attach_function :evas_event_callback_del_full, [:pointer, EvasCallbackType, :event_cb, :pointer], :pointer
+  attach_function :evas_post_event_callback_push, [:pointer, :event_post_cb, :pointer], :void
+  attach_function :evas_post_event_callback_remove, [:pointer, :event_post_cb], :void
+  attach_function :evas_post_event_callback_remove_full, [:pointer, :event_post_cb, :pointer], :void
+
   # Image Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Image__Group.html
 
