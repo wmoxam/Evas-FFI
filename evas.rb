@@ -663,6 +663,22 @@ module Evas
   # Event Feeding Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Event__Feeding__Group.html
 
+  EvasButtonFlags = enum( :none,
+                          :double_click,
+                          :triple_click )
+
+  attach_function :evas_event_freeze_get, [:pointer], :int
+  attach_function :evas_event_feed_mouse_down, [:pointer, :uint, :pointer], :void
+  attach_function :evas_event_feed_mouse_up, [:pointer, EvasButtonFlags, :uint, :pointer], :void
+  attach_function :evas_event_feed_mouse_cancel, [:pointer, :uint, :pointer], :void
+  attach_function :evas_event_feed_mouse_wheel, [:pointer, :int, :int, :uint, :pointer], :void
+  attach_function :evas_event_feed_mouse_move, [:pointer, :uint, :pointer], :void
+  attach_function :evas_event_feed_mouse_in, [:pointer, :uint, :pointer], :void
+  attach_function :evas_event_feed_mouse_out, [:pointer, :uint, :pointer], :void
+  attach_function :evas_event_feed_key_down, [:pointer, :pointer, :pointer, :pointer, :pointer, :uint, :pointer], :void
+  attach_function :evas_event_feed_key_up, [:pointer, :pointer, :pointer, :pointer, :pointer, :uint, :pointer], :void
+  attach_function :evas_event_feed_hold, [:pointer, :int, :uint, :pointer], :void
+
   # Canvas Events
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Canvas__Events.html
 
