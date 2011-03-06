@@ -507,6 +507,14 @@ module Evas
   # Smart Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Smart__Group.html
 
+  attach_function :evas_smart_free, [:pointer], :void
+  attach_function :evas_smart_class_new, [:pointer], :pointer
+  attach_function :evas_smart_class_get, [:pointer], :pointer
+  attach_function :evas_smart_data_get, [:pointer], :pointer
+  attach_function :evas_smart_callbacks_descriptions_get, [:pointer, :pointer], :pointer
+  attach_function :evas_smart_callback_description_find, [:pointer, :pointer], :pointer
+  attach_function :evas_smart_class_inherit_full, [:pointer, :pointer, :int], :int
+
   # Clipped Smart Functions
   # http://docs.enlightenment.org/auto/evas/group__Evas__Smart__Object__Clipped.html
 
