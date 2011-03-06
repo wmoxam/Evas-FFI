@@ -566,7 +566,30 @@ module Evas
 
   # Table Smart Object
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Object__Table.html
-  
+ 
+  EvasObjectTableHomogeneousMode = enum( :none,
+                                         :table,
+                                         :item )
+
+  attach_function :evas_object_table_add, [:pointer], :pointer
+  attach_function :evas_object_table_add_to, [:pointer], :pointer
+  attach_function :evas_object_table_homogeneous_set, [:pointer, EvasObjectTableHomogeneousMode], :void
+  attach_function :evas_object_table_homogeneous_get, [:pointer], EvasObjectTableHomogeneousMode
+  attach_function :evas_object_table_align_set, [:pointer, :double, :double], :void
+  attach_function :evas_object_table_align_get, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_table_padding_set, [:pointer, :int, :int], :void
+  attach_function :evas_object_table_padding_get, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_table_pack, [:pointer, :short, :short, :short, :short], :int
+  attach_function :evas_object_table_unpack, [:pointer, :pointer], :int
+  attach_function :evas_object_table_clear, [:pointer, :int], :void
+  attach_function :evas_object_table_col_row_size_get, [:pointer, :pointer, :pointer], :void
+  attach_function :evas_object_table_iterator_new, [:pointer], :pointer
+  attach_function :evas_object_table_accessor_new, [:pointer], :pointer
+  attach_function :evas_object_table_children_get, [:pointer], :pointer
+  attach_function :evas_object_table_child_get, [:pointer, :short, :short], :pointer
+  attach_function :evas_object_table_mirrored_get, [:pointer], :int
+  attach_function :evas_object_table_mirrored_set, [:pointer, :int], :void
+
   # Canvas Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Canvas.html
 
