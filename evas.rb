@@ -703,6 +703,20 @@ module Evas
   # Font Functions
   # See: http://docs.enlightenment.org/auto/evas/group__Evas__Font__Group.html
 
+  EvasFontHintingFlags = enum( :none,
+                               :auto,
+                               :bytecode )
+
+  attach_function :evas_font_hinting_set, [:pointer, EvasFontHintingFlags], :void
+  attach_function :evas_font_hinting_get, [:pointer], EvasFontHintingFlags
+  attach_function :evas_font_hinting_can_hint, [:pointer, EvasFontHintingFlags], :int
+  attach_function :evas_font_cache_flush, [:pointer], :void
+  attach_function :evas_font_cache_set, [:pointer, :int], :void
+  attach_function :evas_font_cache_get, [:pointer], :int
+  attach_function :evas_font_available_list, [:pointer], :pointer
+  attach_function :evas_font_available_list_free, [:pointer, :pointer], :void
+
+
   # Shared Image Cache Server
   # http://docs.enlightenment.org/auto/evas/group__Evas__Cserve.html
 
