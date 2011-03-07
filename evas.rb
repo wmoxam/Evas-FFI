@@ -716,9 +716,15 @@ module Evas
   attach_function :evas_font_available_list, [:pointer], :pointer
   attach_function :evas_font_available_list_free, [:pointer, :pointer], :void
 
-
   # Shared Image Cache Server
   # http://docs.enlightenment.org/auto/evas/group__Evas__Cserve.html
+
+  attach_function :evas_cserve_want_get, [], :int
+  attach_function :evas_cserve_connected_get, [], :int
+  attach_function :evas_cserve_stats_get, [:pointer], :int
+  attach_function :evas_cserve_config_get, [:pointer], :int
+  attach_function :evas_cserve_config_set, [:pointer], :int
+  attach_function :evas_cserve_disconnect, [], :void
 
   # General Utilities
   # http://docs.enlightenment.org/auto/evas/group__Evas__Utils.html
