@@ -728,4 +728,17 @@ module Evas
 
   # General Utilities
   # http://docs.enlightenment.org/auto/evas/group__Evas__Utils.html
+
+  attach_function :evas_load_error_str, [EvasLoadError], :pointer
+  attach_function :evas_color_hsv_to_rgb, [:float, :float, :float, :pointer, :pointer, :pointer], :void
+  attach_function :evas_color_rgb_to_hsv, [:int, :int, :int, :pointer, :pointer, :pointer], :void
+  attach_function :evas_color_argb_premul, [:int, :pointer, :pointer, :pointer], :void
+  attach_function :evas_color_argb_unpremul, [:int, :pointer, :pointer, :pointer], :void
+  attach_function :evas_data_argb_premul, [:pointer, :int], :void
+  attach_function :evas_data_argb_unpremul, [:pointer, :int], :void
+  # Not sure that these are needed ... Ruby can do this shit
+  attach_function :evas_string_char_next_get, [:pointer, :int, :pointer], :int
+  attach_function :evas_string_char_prev_get, [:pointer, :int, :pointer], :int
+  attach_function :evas_string_char_len_get, [:pointer], :int
+
 end
