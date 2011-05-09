@@ -611,9 +611,6 @@ module Evas
   attach_function :evas_object_show, [:pointer], :void
   attach_function :evas_obscured_rectangle_add, [:pointer, :int, :int, :int, :int], :void
   attach_function :evas_obscured_clear, [:pointer], :void
-  attach_function :evas_output_size_get, [:pointer, :pointer, :pointer], :void
-  attach_function :evas_output_size_set, [:pointer, :int, :int], :void
-  attach_function :evas_output_viewport_set, [:pointer, :int, :int, :int, :int], :void
   attach_function :evas_render, [:pointer], :void
   attach_function :evas_render_idle_flush, [:pointer], :void
   attach_function :evas_render_updates_free, [:pointer], :void
