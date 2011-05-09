@@ -1,0 +1,3 @@
+* Add missing data structures
+* Use :string type rather than :pointer where appropriate
+* Add some more examples
