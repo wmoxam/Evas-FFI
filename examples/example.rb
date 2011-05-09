@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 
-# In this version we'll do a 1-1 api mapping
+# In this lib we'll do a 1-1 api mapping
 
 require '../evas'
 
@@ -142,7 +142,7 @@ def save_scene(canvas, dest)
    end
 
    f.close
-   printf("saved scene as '%s'\n", dest)
+   puts "saved scene as '#{dest}'"
 end
 
 main
