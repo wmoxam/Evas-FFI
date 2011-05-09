@@ -1,0 +1,4 @@
+*.swp
+*.rbc
+*.swo
+examples/evas-buffer-simple
