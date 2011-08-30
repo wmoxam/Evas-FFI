@@ -404,8 +404,8 @@ module Evas
   attach_function :evas_object_textblock_style_get, [:pointer], :pointer
   attach_function :evas_object_textblock_replace_char_set, [:pointer, :pointer], :void
   attach_function :evas_object_textblock_replace_char_get, [:pointer], :pointer
-  attach_function :evas_object_textblock_newline_mode_set, [:pointer, :int], :void
-  attach_function :evas_object_textblock_newline_mode_get, [:pointer], :int
+#  attach_function :evas_object_textblock_newline_mode_set, [:pointer, :int], :void
+#  attach_function :evas_object_textblock_newline_mode_get, [:pointer], :int
   attach_function :evas_textblock_escape_string_get, [:pointer], :pointer
   attach_function :evas_textblock_escape_string_range_get, [:pointer, :pointer], :pointer
   attach_function :evas_textblock_string_escape_get, [:pointer, :pointer], :pointer
