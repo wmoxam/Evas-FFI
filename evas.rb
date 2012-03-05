@@ -4,14 +4,16 @@ module Evas
   extend FFI::Library
   ffi_lib 'evas'
 
+  private
   def self.soft_attach(method, *args)
      begin
        attach_function method, *args
      rescue Exception => e
-        puts "Warning, could not attach #{method} because #{e.message}"
+        STDERR.puts "Warning, could not attach #{method} because #{e.message}"
      end
   end
 
+  public
   EVAS_ENGINE_BUFFER_DEPTH_ARGB32 = 0
   EVAS_ENGINE_BUFFER_DEPTH_BGRA32 = 1
   EVAS_ENGINE_BUFFER_DEPTH_RGB24 = 2
