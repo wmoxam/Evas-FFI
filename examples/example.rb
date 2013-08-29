@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 
 # In this lib we'll do a 1-1 api mapping
-$LOAD_PATH.unshift(File.dirname(__FILE__) + "/..")
+$LOAD_PATH.unshift(File.dirname(__FILE__) + "/../lib")
 require 'evas'
 
 WIDTH = 320
